@@ -70,3 +70,7 @@ class TodoItem extends React.Component {
 };
 
 export default TodoItem;
+
+TodoItem.propTypes = {
+  todoItem: PropTypes.object.isRequired,
+};
