@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import TodoItem from './TodoItem';
 import TodoItems from './TodoItems';
+import TodoForm from './TodoForm';
 
 import axios from 'axios';
 
@@ -14,6 +15,7 @@ class TodoApp extends React.Component {
     };
 
     this.getTodoItems = this.getTodoItems.bind(this);
+    this.createTodoItem = this.createTodoItem.bind(this);
   };
 
   componentDidMount(){
@@ -32,13 +34,22 @@ class TodoApp extends React.Component {
       });
   }
 
+  createTodoItem(todoItem) {
+    const todoItems = [todoItem, ...this.state.todoItems];
+    this.setState({ todoItems });
+  }
+
   render() {
     return (
-      <TodoItems>
-        {this.state.todoItems.map(todoItem => (
-          <TodoItem key={todoItem.id} todoItem={todoItem} />
-          ))}
-      </TodoItems>
+      <>
+        <TodoForm createTodoItem={this.createTodoItem} />
+
+        <TodoItems>
+          {this.state.todoItems.map(todoItem => (
+            <TodoItem key={todoItem.id} todoItem={todoItem} />
+            ))}
+        </TodoItems>
+      </>
     );
   };
 };
