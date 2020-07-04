@@ -48,8 +48,7 @@ class TodoApp extends React.Component {
           {this.state.todoItems.map(todoItem => (
             <TodoItem key={todoItem.id} todoItem={todoItem} getTodoItems={this.getTodoItems}
             />
-            
-            ))}
+          ))}
         </TodoItems>
       </>
     );
